@@ -2,7 +2,7 @@
 
 ## [vector](https://cplusplus.com/vector)
 
-1、[emplace_bac`k()](https://cplusplus.com/reference/vector/vector/emplace_back/)：在vector 的末尾插入一个新元素
+1、[emplace_back()](https://cplusplus.com/reference/vector/vector/emplace_back/)：在vector 的末尾插入一个新元素
 
 ```c++
 vector<int> myvector = {10,20,30};
@@ -13,16 +13,17 @@ myvector.emplace_back (100);
 
 ## [string](https://cplusplus.com/reference/string/string)
 
-1、[substr()](https://cplusplus.com/reference/string/string/substr/)：从字符位置pos开始并跨越len个字符，而不是到索引为len的位置
+1、[**substr()**](https://cplusplus.com/reference/string/string/substr/)：从字符位置pos开始并跨越len个字符
+
+> substr (size_t pos = 0, size_t len = npos)
+
 
 ```c++
 std::string str="We think in generalities, but we live in details.";
 std::string str2 = str.substr (3,5);     // "think"
-std::size_t pos = str.find("live");      // position of "live" in str
-std::string str3 = str.substr (pos);     // get from "live" to the end
 ```
 
-2、[append()](https://cplusplus.com/reference/string/string/append/)：在当前字符串后追加一个字符串
+2、[**append()**](https://cplusplus.com/reference/string/string/append/)：在当前字符串后追加一个字符串
 
 ```c++
 //重载函数
@@ -32,18 +33,7 @@ string& append (const char* s);//追加一个指针字符串
 string& append (size_t n, char c);//追加n个字符c
 ```
 
-3、strncpy()：复制字符串
-
-```c++
-char str1[]= "To be or not to be";
-char str2[40];
-char str3[40];
-strncpy ( str2, str1, sizeof(str2) );//“To be or not to be”
-strncpy ( str3, str2, 5 );//“To be”
-str3[5] = '\0';   /* null character manually added */
-```
-
-3、substr(size_t pos , size_t len)：获得子字符串，[pos, pos + len]
+3、**substr(size_t pos , size_t len)**：获得子字符串，[pos, pos + len]
 
 ```c++
 std::string str="We think in generalities, but we live in details.";
@@ -51,7 +41,22 @@ std::string str="We think in generalities, but we live in details.";
 std::string str2 = str.substr (3,5);     // "think"
 ```
 
+4、 **string& insert (size_t pos, const string& str)**：在字符串s的第pos个位置之前插入字符串str
 
+```c++
+string str="to be question";
+string str2="the ";
+  // used in the same order as described above:
+str.insert(6,str2);                 // to be (the )question
+```
+
+5、**size_t find (const string& str, size_t pos = 0)** ：在字符串s中的第pos个字符开始搜索str，若找到则返回下标，否则返回-1；
+
+```
+string str ("There are two needles in this haystack with needles.");
+string str2 ("needle");
+size_t found = str.find(str2);
+```
 
 ##  [queue](https://cplusplus.com/reference/queue/queue/?kw=queue)
 
